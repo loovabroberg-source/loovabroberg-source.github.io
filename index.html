@@ -123,7 +123,7 @@
   </div>
 
   <div class="gubbe-wrap">
-    <svg class="gubbe" viewBox="0 0 220 420" role="img" aria-label="Streckgubbe med Lovas ansikte som går till jobbet med Mrs Dalloway av Virginia Woolf i handen">
+    <svg class="gubbe" viewBox="0 -10 220 430" role="img" aria-label="Streckgubbe med Lovas ansikte och lockigt hår som går till jobbet med Mrs Dalloway av Virginia Woolf i handen">
       <defs>
         <filter id="darr" filterUnits="userSpaceOnUse" x="-40" y="-40" width="300" height="500">
           <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4"/>
@@ -131,6 +131,34 @@
         </filter>
         <clipPath id="huvud"><circle cx="110" cy="62" r="56"/></clipPath>
       </defs>
+
+      <!-- Bakre lockigt hår (ljusbrunt, ner till axlarna) -->
+      <g class="har-bak" filter="url(#darr)">
+        <path d="
+          M 60 155
+          C 42 145, 36 125, 40 105
+          C 32 92, 30 72, 36 56
+          C 30 38, 40 18, 58 8
+          C 72 0, 88 -6, 110 -6
+          C 132 -6, 148 0, 162 8
+          C 180 18, 190 38, 184 56
+          C 190 72, 188 92, 180 105
+          C 184 125, 178 145, 160 155
+          C 146 162, 140 145, 144 130
+          C 148 115, 154 95, 154 70
+          C 154 35, 135 15, 110 15
+          C 85 15, 66 35, 66 70
+          C 66 95, 72 115, 76 130
+          C 80 145, 74 162, 60 155 Z"
+          fill="#c48d56" stroke="#111" stroke-width="4.5" stroke-linejoin="round" />
+        
+        <!-- Yttre lockiga detaljer i bakgrundshåret -->
+        <g fill="none" stroke="#111" stroke-width="3.5" stroke-linecap="round">
+          <path d="M 46 42 Q 32 58 44 74 Q 32 90 44 108 Q 36 126 52 142" />
+          <path d="M 174 42 Q 188 58 176 74 Q 188 90 176 108 Q 184 126 168 142" />
+          <path d="M 74 2 Q 92 -8 110 -5 Q 128 -8 146 2" />
+        </g>
+      </g>
 
       <g fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
         <g class="arm bak"><path filter="url(#darr)" d="M110 150 L110 240"/></g>
@@ -154,13 +182,65 @@
       <!-- Huvud: ritat ansikte syns tills lova.jpg finns -->
       <circle cx="110" cy="62" r="56" fill="#fffdf6"/>
       <g fill="none" stroke="#111" stroke-width="4" stroke-linecap="round">
-        <path d="M62 50 q4-30 22-34 q6-12 26-10 q20-4 28 10 q20 4 22 34"/>
         <circle cx="92" cy="58" r="2.5" fill="#111"/>
         <circle cx="128" cy="58" r="2.5" fill="#111"/>
         <path d="M90 82 q20 18 40 0"/>
       </g>
       <image href="lova.jpg" x="54" y="6" width="112" height="112" preserveAspectRatio="xMidYMid slice" clip-path="url(#huvud)" onerror="this.remove()"/>
       <circle cx="110" cy="62" r="56" fill="none" stroke="#111" stroke-width="6" filter="url(#darr)"/>
+
+      <!-- Främre lockar (ramar in pannan och faller ner framför axlarna) -->
+      <g class="har-fram" filter="url(#darr)">
+        <!-- Lockar i pannan -->
+        <path d="
+          M 62 38
+          C 72 22, 85 24, 95 32
+          C 102 24, 118 24, 125 32
+          C 135 22, 148 24, 158 38
+          C 150 29, 136 28, 125 34
+          C 117 27, 103 27, 95 34
+          C 85 27, 72 29, 62 38 Z"
+          fill="#c48d56" stroke="#111" stroke-width="3.5" stroke-linejoin="round" />
+
+        <!-- Vänster lockig hårslinga ner över axeln -->
+        <path d="
+          M 65 35
+          C 50 48, 46 68, 54 84
+          C 44 98, 46 118, 56 132
+          C 48 144, 52 158, 62 163
+          C 70 166, 75 155, 68 145
+          C 60 133, 58 116, 64 104
+          C 56 89, 58 72, 68 56
+          C 73 48, 69 38, 65 35 Z"
+          fill="#c48d56" stroke="#111" stroke-width="3.5" stroke-linejoin="round" />
+
+        <!-- Höger lockig hårslinga ner över axeln -->
+        <path d="
+          M 155 35
+          C 170 48, 174 68, 166 84
+          C 176 98, 174 118, 164 132
+          C 172 144, 168 158, 158 163
+          C 150 166, 145 155, 152 145
+          C 160 133, 162 116, 156 104
+          C 164 89, 162 72, 152 56
+          C 147 48, 151 38, 155 35 Z"
+          fill="#c48d56" stroke="#111" stroke-width="3.5" stroke-linejoin="round" />
+
+        <!-- Inre lockvirvlar och texturlinjer för skissig känsla -->
+        <g fill="none" stroke="#111" stroke-width="3" stroke-linecap="round">
+          <path d="M 54 60 Q 42 74 53 86 Q 44 98 54 112 Q 46 128 57 142 Q 52 152 61 158" />
+          <path d="M 62 76 Q 54 88 61 98" />
+          <path d="M 60 118 Q 52 130 62 142" />
+
+          <path d="M 166 60 Q 178 74 167 86 Q 176 98 166 112 Q 174 128 163 142 Q 168 152 159 158" />
+          <path d="M 158 76 Q 166 88 159 98" />
+          <path d="M 160 118 Q 168 130 158 142" />
+
+          <path d="M 80 18 Q 92 10 105 18" />
+          <path d="M 115 18 Q 128 10 140 18" />
+          <path d="M 98 10 Q 110 3 122 10" />
+        </g>
+      </g>
     </svg>
   </div>
 
