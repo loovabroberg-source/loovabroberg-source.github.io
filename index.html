@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lova Broberg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100svh;
+    background: #1c2340 url(kulturhuset.jpg) center / cover fixed;
+    font-family: "Patrick Hand", "Comic Sans MS", cursive;
+    color: #111;
+    overflow-x: hidden;
+  }
+  .scen { min-height: 100svh; display: flex; flex-direction: column; }
+
+  /* Mobil/stående: bubblorna staplas ovanför gubben */
+  .bubblor { display: flex; flex-direction: column; gap: 2.2rem; padding: 1.2rem 16px 0; }
+  .bubbla {
+    position: relative;
+    max-width: 82%;
+    margin: 0;
+    padding: .9em 1.3em;
+    background: #fffdf6;
+    border: 3px solid #111;
+    border-radius: 58% 42% 52% 48% / 52% 46% 54% 48%;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    text-align: center;
+    rotate: var(--r, 0deg);
+    animation: poff .5s cubic-bezier(.3, 1.7, .5, 1) both, sväva 4s ease-in-out infinite alternate;
+    animation-delay: calc(2.4s + var(--i) * .7s), calc(var(--i) * -1.3s);
+  }
+  .bubbla:nth-child(odd) { align-self: flex-start; }
+  .bubbla:nth-child(even) { align-self: flex-end; }
+  /* tankeprickarna */
+  .bubbla::before, .bubbla::after {
+    content: "";
+    position: absolute;
+    background: #fffdf6;
+    border: 3px solid #111;
+    border-radius: 50%;
+  }
+  .bubbla::before { width: 22px; height: 18px; left: var(--p1x, 46%); top: var(--p1y, calc(100% + 6px)); }
+  .bubbla::after  { width: 12px; height: 11px; left: var(--p2x, 52%); top: var(--p2y, calc(100% + 28px)); }
+
+  .gubbe-wrap {
+    margin: 1rem auto 3svh;
+    width: fit-content;
+    animation: inkliv 2.6s ease-out both;
+  }
+  .gubbe {
+    display: block;
+    height: 44svh;
+    width: auto;
+    overflow: visible;
+    /* vit "klistermärkes"-kant så gubben syns mot det mörka fotot */
+    filter: drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 2px #fff);
+    animation: gunga .45s ease-in-out infinite alternate;
+  }
+  .ben, .arm { transform-origin: 110px 258px; animation: sving .9s ease-in-out infinite alternate; }
+  .ben.b { animation-direction: alternate-reverse; }
+  .arm { transform-origin: 110px 150px; }
+  .arm.bak { animation-direction: alternate-reverse; }
+  .arm.fram { --sving: 6deg; }
+
+  .namn {
+    margin: 0 16px 16px;
+    align-self: flex-start;
+    padding: .2em .7em;
+    background: #fffdf6;
+    border: 2px solid #111;
+    font-size: 1.15rem;
+    rotate: -2deg;
+  }
+
+  /* Liggande skärm: bubblorna runt huvudet */
+  @media (min-aspect-ratio: 1/1) and (min-width: 701px) {
+    .scen { position: relative; height: 100svh; overflow: hidden; }
+    .bubblor { position: absolute; inset: 0; padding: 0; }
+    .bubbla {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: min(22rem, 26vw);
+      max-width: none;
+      font-size: clamp(1.05rem, 1.35vw, 1.45rem);
+    }
+    .bubbla:nth-child(1) { --x: 5%;  --y: 7%;  --r: -3deg; --p1x: 78%; --p1y: calc(100% + 4px); --p2x: 90%; --p2y: calc(100% + 26px); }
+    .bubbla:nth-child(2) { --x: 37%; --y: 3%;  --r: 2deg; }
+    .bubbla:nth-child(3) { --x: 69%; --y: 8%;  --r: 3deg;  --p1x: 18%; --p1y: calc(100% + 4px); --p2x: 8%;  --p2y: calc(100% + 26px); }
+    .bubbla:nth-child(4) { --x: 7%;  --y: 45%; --r: 2deg;  --p1x: calc(100% + 6px); --p1y: 30%; --p2x: calc(100% + 30px); --p2y: 18%; }
+    .bubbla:nth-child(5) { --x: 67%; --y: 47%; --r: -2deg; --p1x: -28px; --p1y: 30%; --p2x: -48px; --p2y: 18%; }
+    .gubbe-wrap { position: absolute; bottom: 3svh; inset-inline: 0; margin: 0 auto; }
+    .gubbe { height: 52svh; }
+    .namn { position: absolute; left: 0; bottom: 0; }
+  }
+
+  @keyframes inkliv { from { transform: translateX(-70vw); } }
+  @keyframes gunga { to { translate: 0 -5px; } }
+  @keyframes sving { from { rotate: calc(var(--sving, 22deg) * -1); } to { rotate: var(--sving, 22deg); } }
+  @keyframes poff { from { opacity: 0; scale: .3; } }
+  @keyframes sväva { to { translate: 0 -8px; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<main class="scen">
+  <div class="bubblor">
+    <p class="bubbla" style="--i:0">Vilken berättelse har inte nått publiken? Hur kan den göra det?</p>
+    <p class="bubbla" style="--i:1">Hur fungerade vår senaste kampanj? Vad var våra senaste lärdomar?</p>
+    <p class="bubbla" style="--i:2">Hur får vi fler att känna att Kulturhuset är deras arena?</p>
+    <p class="bubbla" style="--i:3">Tänk om den som aldrig hittar kultur kommer hit idag?</p>
+    <p class="bubbla" style="--i:4">Kan vi vara både folkbildande och roliga?</p>
+  </div>
+
+  <div class="gubbe-wrap">
+    <svg class="gubbe" viewBox="0 0 220 420" role="img" aria-label="Streckgubbe med Lovas ansikte som går till jobbet med Mrs Dalloway av Virginia Woolf i handen">
+      <defs>
+        <filter id="darr" filterUnits="userSpaceOnUse" x="-40" y="-40" width="300" height="500">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4"/>
+          <feDisplacementMap in="SourceGraphic" scale="6"/>
+        </filter>
+        <clipPath id="huvud"><circle cx="110" cy="62" r="56"/></clipPath>
+      </defs>
+
+      <g fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <g class="arm bak"><path filter="url(#darr)" d="M110 150 L110 240"/></g>
+        <g class="ben a"><path filter="url(#darr)" d="M110 258 L110 400 L128 402"/></g>
+        <g class="ben b"><path filter="url(#darr)" d="M110 258 L110 400 L128 402"/></g>
+        <path filter="url(#darr)" d="M110 116 L110 262"/>
+        <g class="arm fram">
+          <path filter="url(#darr)" d="M110 150 L162 212"/>
+          <g transform="translate(146 178) rotate(-8)" stroke-width="4">
+            <rect width="72" height="94" rx="3" fill="#e9c46a"/>
+            <path d="M9 0 V94"/>
+            <g fill="#111" stroke="none" text-anchor="middle" font-family="Patrick Hand, Comic Sans MS, cursive">
+              <text x="40" y="34" font-size="15">Mrs</text>
+              <text x="40" y="51" font-size="15">Dalloway</text>
+              <text x="40" y="78" font-size="10">Virginia Woolf</text>
+            </g>
+          </g>
+        </g>
+      </g>
+
+      <!-- Huvud: ritat ansikte syns tills lova.jpg finns -->
+      <circle cx="110" cy="62" r="56" fill="#fffdf6"/>
+      <g fill="none" stroke="#111" stroke-width="4" stroke-linecap="round">
+        <path d="M62 50 q4-30 22-34 q6-12 26-10 q20-4 28 10 q20 4 22 34"/>
+        <circle cx="92" cy="58" r="2.5" fill="#111"/>
+        <circle cx="128" cy="58" r="2.5" fill="#111"/>
+        <path d="M90 82 q20 18 40 0"/>
+      </g>
+      <image href="lova.jpg" x="54" y="6" width="112" height="112" preserveAspectRatio="xMidYMid slice" clip-path="url(#huvud)" onerror="this.remove()"/>
+      <circle cx="110" cy="62" r="56" fill="none" stroke="#111" stroke-width="6" filter="url(#darr)"/>
+    </svg>
+  </div>
+
+  <p class="namn">Lova Broberg – på väg till jobbet</p>
+</main>
+</body>
+</html>

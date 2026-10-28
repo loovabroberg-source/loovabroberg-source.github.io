@@ -1,0 +1,26 @@
+Lovas startsida
+===============
+
+Filer:
+  index.html       sidan
+  kulturhuset.jpg  bakgrunden
+  lova.jpg         DIN BILD (saknas, lägg till den!)
+
+1. Ditt ansikte
+   Lägg en bild på dig som heter exakt "lova.jpg" i samma mapp.
+   Kvadratisk, ansiktet i mitten. Den hamnar i streckgubbens huvud.
+   Tills den finns visas en ritad smiley.
+
+2. Publicera på GitHub Pages
+   - Skapa ett nytt repo på github.com som heter  DITTANVÄNDARNAMN.github.io
+     (publik).
+   - "Add file" > "Upload files" > dra in index.html, kulturhuset.jpg och lova.jpg
+     > "Commit changes".
+   - Efter en minut eller två ligger sidan på  https://DITTANVÄNDARNAMN.github.io
+   (Om det inte syns: Settings > Pages > Branch: main > Save.)
+
+3. Ändra texten
+   Öppna index.html i valfri texteditor; frågorna står i klartext längst ner.
+
+Obs: Bakgrundsfotot har någon annan tagit. Kolla var det kommer ifrån och
+om du behöver ange fotograf innan sidan blir publik.
