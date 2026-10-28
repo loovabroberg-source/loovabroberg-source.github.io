@@ -3,83 +3,127 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lova Broberg</title>
+<title>Lova Broberg – På väg till jobbet</title>
+<meta name="description" content="Lova Broberg – På väg till jobbet på Kulturhuset Stadsteatern">
+<!-- Förhandsvisning när du delar länken i mejl, SMS eller LinkedIn -->
+<meta property="og:title" content="Lova Broberg – På väg till jobbet">
+<meta property="og:description" content="Vilken berättelse har inte nått publiken? Hur får vi fler att känna att Kulturhuset är deras arena?">
+<meta property="og:image" content="https://loovabroberg-source.github.io/kulturhuset.jpg">
+<meta property="og:url" content="https://loovabroberg-source.github.io/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
   body {
     margin: 0;
     min-height: 100svh;
-    background: #1c2340 url(kulturhuset.jpg) center / cover fixed;
-    font-family: "Patrick Hand", "Comic Sans MS", cursive;
-    color: #111;
+    background: linear-gradient(180deg, rgba(8, 12, 26, 0.42) 0%, rgba(8, 12, 26, 0.78) 100%),
+                url(kulturhuset.jpg) center / cover fixed;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #0f172a;
     overflow-x: hidden;
   }
   .scen { min-height: 100svh; display: flex; flex-direction: column; }
 
-  /* Mobil/stående: bubblorna staplas ovanför gubben */
-  .bubblor { display: flex; flex-direction: column; gap: 2.2rem; padding: 1.2rem 16px 0; }
+  /* Tankebubblor */
+  .bubblor { display: flex; flex-direction: column; gap: 2.2rem; padding: 1.5rem 16px 0; }
   .bubbla {
     position: relative;
-    max-width: 82%;
+    max-width: 86%;
     margin: 0;
-    padding: .9em 1.3em;
-    background: #fffdf6;
-    border: 3px solid #111;
-    border-radius: 58% 42% 52% 48% / 52% 46% 54% 48%;
-    font-size: 1.1rem;
-    line-height: 1.2;
+    padding: 1.15rem 1.45rem;
+    background: #ffffff;
+    border: 2.5px solid #111827;
+    border-radius: 30px 28px 30px 26px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.015em;
+    color: #111827;
     text-align: center;
-    rotate: var(--r, 0deg);
-    animation: poff .5s cubic-bezier(.3, 1.7, .5, 1) both, sväva 4s ease-in-out infinite alternate;
-    animation-delay: calc(2.4s + var(--i) * .7s), calc(var(--i) * -1.3s);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28), 0 3px 8px rgba(0, 0, 0, 0.08);
+    animation: poff .6s cubic-bezier(0.16, 1, 0.3, 1) both, sväva 5s ease-in-out infinite alternate;
+    animation-delay: calc(1.8s + var(--i) * .45s), calc(var(--i) * -1.2s);
   }
   .bubbla:nth-child(odd) { align-self: flex-start; }
   .bubbla:nth-child(even) { align-self: flex-end; }
-  /* tankeprickarna */
+
+  /* Tankeprickar / svans som leder mot Lova */
   .bubbla::before, .bubbla::after {
     content: "";
     position: absolute;
-    background: #fffdf6;
-    border: 3px solid #111;
+    background: #ffffff;
+    border: 2.5px solid #111827;
     border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
-  .bubbla::before { width: 22px; height: 18px; left: var(--p1x, 46%); top: var(--p1y, calc(100% + 6px)); }
-  .bubbla::after  { width: 12px; height: 11px; left: var(--p2x, 52%); top: var(--p2y, calc(100% + 28px)); }
+  .bubbla::before {
+    width: 18px;
+    height: 18px;
+    left: var(--p1x, 48%);
+    top: var(--p1y, calc(100% + 5px));
+  }
+  .bubbla::after {
+    width: 11px;
+    height: 11px;
+    left: var(--p2x, 52%);
+    top: var(--p2y, calc(100% + 24px));
+  }
 
+  /* Gående figur */
   .gubbe-wrap {
-    margin: 1rem auto 3svh;
+    margin: 1.5rem auto 2svh;
     width: fit-content;
-    animation: inkliv 2.6s ease-out both;
+    animation: inkliv 2.4s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
   .gubbe {
     display: block;
-    height: 44svh;
+    height: 52svh;
     width: auto;
-    overflow: visible;
-    /* vit "klistermärkes"-kant så gubben syns mot det mörka fotot */
-    filter: drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 2px #fff);
-    animation: gunga .45s ease-in-out infinite alternate;
+    max-width: 90vw;
+    object-fit: contain;
+    /* Skarp vit kontur + mjuk djupskugga mot bakgrunden */
+    filter: drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 2px #fff) drop-shadow(0 12px 28px rgba(0, 0, 0, 0.45));
+    animation: gunga .65s ease-in-out infinite alternate;
   }
-  .ben, .arm { transform-origin: 110px 258px; animation: sving .9s ease-in-out infinite alternate; }
-  .ben.b { animation-direction: alternate-reverse; }
-  .arm { transform-origin: 110px 150px; }
-  .arm.bak { animation-direction: alternate-reverse; }
-  .arm.fram { --sving: 6deg; }
 
-  .namn {
-    margin: 0 16px 16px;
+  /* Kulturhuset-inspirerat namnbadge */
+  .namn-badge {
+    margin: 0 16px 20px;
     align-self: flex-start;
-    padding: .2em .7em;
-    background: #fffdf6;
-    border: 2px solid #111;
-    font-size: 1.15rem;
-    rotate: -2deg;
+    padding: 14px 22px;
+    background: #000000;
+    color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .namn-tagg {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #eab308;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .namn-titel {
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+  .namn-sub {
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.78);
+    margin-top: 3px;
   }
 
-  /* Liggande skärm: bubblorna runt huvudet */
+  /* Liggande skärm / Desktop: Tankebubblor placerade runt huvudet */
   @media (min-aspect-ratio: 1/1) and (min-width: 701px) {
     .scen { position: relative; height: 100svh; overflow: hidden; }
     .bubblor { position: absolute; inset: 0; padding: 0; }
@@ -87,25 +131,26 @@
       position: absolute;
       left: var(--x);
       top: var(--y);
-      width: min(22rem, 26vw);
+      width: min(22rem, 25vw);
       max-width: none;
-      font-size: clamp(1.05rem, 1.35vw, 1.45rem);
+      font-size: clamp(0.98rem, 1.18vw, 1.2rem);
+      padding: 1.2rem 1.45rem;
     }
-    .bubbla:nth-child(1) { --x: 5%;  --y: 7%;  --r: -3deg; --p1x: 78%; --p1y: calc(100% + 4px); --p2x: 90%; --p2y: calc(100% + 26px); }
-    .bubbla:nth-child(2) { --x: 37%; --y: 3%;  --r: 2deg; }
-    .bubbla:nth-child(3) { --x: 69%; --y: 8%;  --r: 3deg;  --p1x: 18%; --p1y: calc(100% + 4px); --p2x: 8%;  --p2y: calc(100% + 26px); }
-    .bubbla:nth-child(4) { --x: 7%;  --y: 45%; --r: 2deg;  --p1x: calc(100% + 6px); --p1y: 30%; --p2x: calc(100% + 30px); --p2y: 18%; }
-    .bubbla:nth-child(5) { --x: 67%; --y: 47%; --r: -2deg; --p1x: -28px; --p1y: 30%; --p2x: -48px; --p2y: 18%; }
-    .gubbe-wrap { position: absolute; bottom: 3svh; inset-inline: 0; margin: 0 auto; }
-    .gubbe { height: 52svh; }
-    .namn { position: absolute; left: 0; bottom: 0; }
+    .bubbla:nth-child(1) { --x: 6%;  --y: 9%;  --p1x: 82%; --p1y: calc(100% + 5px); --p2x: 94%; --p2y: calc(100% + 23px); }
+    .bubbla:nth-child(2) { --x: 37%; --y: 4%;  --p1x: 48%; --p1y: calc(100% + 5px); --p2x: 52%; --p2y: calc(100% + 23px); }
+    .bubbla:nth-child(3) { --x: 68%; --y: 9%;  --p1x: 16%; --p1y: calc(100% + 5px); --p2x: 6%;  --p2y: calc(100% + 23px); }
+    .bubbla:nth-child(4) { --x: 7%;  --y: 46%; --p1x: calc(100% + 6px); --p1y: 35%; --p2x: calc(100% + 24px); --p2y: 25%; }
+    .bubbla:nth-child(5) { --x: 66%; --y: 48%; --p1x: -22px; --p1y: 35%; --p2x: -38px; --p2y: 25%; }
+
+    .gubbe-wrap { position: absolute; bottom: 2svh; inset-inline: 0; margin: 0 auto; }
+    .gubbe { height: 60svh; }
+    .namn-badge { position: absolute; left: 24px; bottom: 24px; margin: 0; }
   }
 
-  @keyframes inkliv { from { transform: translateX(-70vw); } }
-  @keyframes gunga { to { translate: 0 -5px; } }
-  @keyframes sving { from { rotate: calc(var(--sving, 22deg) * -1); } to { rotate: var(--sving, 22deg); } }
-  @keyframes poff { from { opacity: 0; scale: .3; } }
-  @keyframes sväva { to { translate: 0 -8px; } }
+  @keyframes inkliv { from { transform: translateX(-60vw); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+  @keyframes gunga { to { transform: translateY(-7px); } }
+  @keyframes poff { from { opacity: 0; transform: scale(.85) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+  @keyframes sväva { to { transform: translateY(-8px); } }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; }
@@ -123,128 +168,14 @@
   </div>
 
   <div class="gubbe-wrap">
-    <svg class="gubbe" viewBox="0 -10 220 430" role="img" aria-label="Streckgubbe med Lovas ansikte och lockigt hår som går till jobbet med Mrs Dalloway av Virginia Woolf i handen">
-      <defs>
-        <filter id="darr" filterUnits="userSpaceOnUse" x="-40" y="-40" width="300" height="500">
-          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4"/>
-          <feDisplacementMap in="SourceGraphic" scale="6"/>
-        </filter>
-        <clipPath id="huvud"><circle cx="110" cy="62" r="56"/></clipPath>
-      </defs>
-
-      <!-- Bakre lockigt hår (ljusbrunt, ner till axlarna) -->
-      <g class="har-bak" filter="url(#darr)">
-        <path d="
-          M 60 155
-          C 42 145, 36 125, 40 105
-          C 32 92, 30 72, 36 56
-          C 30 38, 40 18, 58 8
-          C 72 0, 88 -6, 110 -6
-          C 132 -6, 148 0, 162 8
-          C 180 18, 190 38, 184 56
-          C 190 72, 188 92, 180 105
-          C 184 125, 178 145, 160 155
-          C 146 162, 140 145, 144 130
-          C 148 115, 154 95, 154 70
-          C 154 35, 135 15, 110 15
-          C 85 15, 66 35, 66 70
-          C 66 95, 72 115, 76 130
-          C 80 145, 74 162, 60 155 Z"
-          fill="#c48d56" stroke="#111" stroke-width="4.5" stroke-linejoin="round" />
-        
-        <!-- Yttre lockiga detaljer i bakgrundshåret -->
-        <g fill="none" stroke="#111" stroke-width="3.5" stroke-linecap="round">
-          <path d="M 46 42 Q 32 58 44 74 Q 32 90 44 108 Q 36 126 52 142" />
-          <path d="M 174 42 Q 188 58 176 74 Q 188 90 176 108 Q 184 126 168 142" />
-          <path d="M 74 2 Q 92 -8 110 -5 Q 128 -8 146 2" />
-        </g>
-      </g>
-
-      <g fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-        <g class="arm bak"><path filter="url(#darr)" d="M110 150 L110 240"/></g>
-        <g class="ben a"><path filter="url(#darr)" d="M110 258 L110 400 L128 402"/></g>
-        <g class="ben b"><path filter="url(#darr)" d="M110 258 L110 400 L128 402"/></g>
-        <path filter="url(#darr)" d="M110 116 L110 262"/>
-        <g class="arm fram">
-          <path filter="url(#darr)" d="M110 150 L162 212"/>
-          <g transform="translate(146 178) rotate(-8)" stroke-width="4">
-            <rect width="72" height="94" rx="3" fill="#e9c46a"/>
-            <path d="M9 0 V94"/>
-            <g fill="#111" stroke="none" text-anchor="middle" font-family="Patrick Hand, Comic Sans MS, cursive">
-              <text x="40" y="34" font-size="15">Mrs</text>
-              <text x="40" y="51" font-size="15">Dalloway</text>
-              <text x="40" y="78" font-size="10">Virginia Woolf</text>
-            </g>
-          </g>
-        </g>
-      </g>
-
-      <!-- Huvud: ritat ansikte syns tills lova.jpg finns -->
-      <circle cx="110" cy="62" r="56" fill="#fffdf6"/>
-      <g fill="none" stroke="#111" stroke-width="4" stroke-linecap="round">
-        <circle cx="92" cy="58" r="2.5" fill="#111"/>
-        <circle cx="128" cy="58" r="2.5" fill="#111"/>
-        <path d="M90 82 q20 18 40 0"/>
-      </g>
-      <image href="lova.jpg" x="54" y="6" width="112" height="112" preserveAspectRatio="xMidYMid slice" clip-path="url(#huvud)" onerror="this.remove()"/>
-      <circle cx="110" cy="62" r="56" fill="none" stroke="#111" stroke-width="6" filter="url(#darr)"/>
-
-      <!-- Främre lockar (ramar in pannan och faller ner framför axlarna) -->
-      <g class="har-fram" filter="url(#darr)">
-        <!-- Lockar i pannan -->
-        <path d="
-          M 62 38
-          C 72 22, 85 24, 95 32
-          C 102 24, 118 24, 125 32
-          C 135 22, 148 24, 158 38
-          C 150 29, 136 28, 125 34
-          C 117 27, 103 27, 95 34
-          C 85 27, 72 29, 62 38 Z"
-          fill="#c48d56" stroke="#111" stroke-width="3.5" stroke-linejoin="round" />
-
-        <!-- Vänster lockig hårslinga ner över axeln -->
-        <path d="
-          M 65 35
-          C 50 48, 46 68, 54 84
-          C 44 98, 46 118, 56 132
-          C 48 144, 52 158, 62 163
-          C 70 166, 75 155, 68 145
-          C 60 133, 58 116, 64 104
-          C 56 89, 58 72, 68 56
-          C 73 48, 69 38, 65 35 Z"
-          fill="#c48d56" stroke="#111" stroke-width="3.5" stroke-linejoin="round" />
-
-        <!-- Höger lockig hårslinga ner över axeln -->
-        <path d="
-          M 155 35
-          C 170 48, 174 68, 166 84
-          C 176 98, 174 118, 164 132
-          C 172 144, 168 158, 158 163
-          C 150 166, 145 155, 152 145
-          C 160 133, 162 116, 156 104
-          C 164 89, 162 72, 152 56
-          C 147 48, 151 38, 155 35 Z"
-          fill="#c48d56" stroke="#111" stroke-width="3.5" stroke-linejoin="round" />
-
-        <!-- Inre lockvirvlar och texturlinjer för skissig känsla -->
-        <g fill="none" stroke="#111" stroke-width="3" stroke-linecap="round">
-          <path d="M 54 60 Q 42 74 53 86 Q 44 98 54 112 Q 46 128 57 142 Q 52 152 61 158" />
-          <path d="M 62 76 Q 54 88 61 98" />
-          <path d="M 60 118 Q 52 130 62 142" />
-
-          <path d="M 166 60 Q 178 74 167 86 Q 176 98 166 112 Q 174 128 163 142 Q 168 152 159 158" />
-          <path d="M 158 76 Q 166 88 159 98" />
-          <path d="M 160 118 Q 168 130 158 142" />
-
-          <path d="M 80 18 Q 92 10 105 18" />
-          <path d="M 115 18 Q 128 10 140 18" />
-          <path d="M 98 10 Q 110 3 122 10" />
-        </g>
-      </g>
-    </svg>
+    <img class="gubbe" src="lova-helkropp-redigerad.png" alt="Lova Broberg på väg till jobbet" onerror="this.src='lova-helkropp.png'"/>
   </div>
 
-  <p class="namn">Lova Broberg – på väg till jobbet</p>
+  <div class="namn-badge">
+    <div class="namn-tagg">KULTURHUSET STADSTEATERN</div>
+    <div class="namn-titel">Lova Broberg</div>
+    <div class="namn-sub">På väg till jobbet</div>
+  </div>
 </main>
 </body>
 </html>
